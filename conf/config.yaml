@@ -1,0 +1,5 @@
+runmode: debug      # debug, release, test
+addr: :8080
+name: fruit_shop
+url: http://127.0.0.1:8080
+max_ping_count: 10  # pingServer的retry次数
