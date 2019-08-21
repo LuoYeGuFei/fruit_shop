@@ -3,3 +3,12 @@ addr: :8080
 name: fruit_shop
 url: http://127.0.0.1:8080
 max_ping_count: 10  # pingServer的retry次数
+log:
+  writers: file,stdout
+  logger_level: DEBUG
+  logger_file: log/fruit_shop.log
+  log_format_text: false
+  rollingPolicy: size
+  log_rotate_date: 1
+  log_rotate_size: 1
+  log_backup_count: 7
