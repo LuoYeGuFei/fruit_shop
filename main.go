@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fruit_shop/config"
+	"fruit_shop/model"
 	"fruit_shop/router"
 	"net/http"
 	"time"
@@ -24,14 +25,20 @@ func main() {
 		panic(err)
 	}
 
+	// DB connection
+	model.DB.Init()
+	defer model.DB.Close()
+	
 	// set gin mode
 	gin.SetMode(viper.GetString("runmode"))
 
 	// test log function
-	for {
-		log.Info("Hello word hhhhhhhhhhhhhhhhhhhh")
-		time.Sleep(100 * time.Millisecond)
-	}
+	/*
+		for {
+			log.Info("Hello word hhhhhhhhhhhhhhhhhhhh")
+			time.Sleep(100 * time.Millisecond)
+		}
+	*/
 
 	g := gin.New() // Create the gin engine
 
