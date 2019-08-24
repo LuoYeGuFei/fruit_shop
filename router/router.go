@@ -2,6 +2,7 @@ package router
 
 import (
 	"fruit_shop/handler/sd"
+	"fruit_shop/handler/user"
 	"fruit_shop/router/middleware"
 	"net/http"
 
@@ -20,6 +21,12 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	g.NoRoute(func(c *gin.Context) {
 		c.String(http.StatusNotFound, "The incorrect API route")
 	})
+
+	// For user
+	u := g.Group("/v1/user")
+	{
+		u.POST("", user.Create)
+	}
 
 	svcd := g.Group("/sd")
 	{
