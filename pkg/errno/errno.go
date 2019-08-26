@@ -13,13 +13,6 @@ type Err struct {
 	Err     error
 }
 
-var (
-	OK                  = &Errno{Code: 0, Message: "OK"}
-	InternalServerError = &Errno{Code: 10001, Message: "Internal server error"}
-	ErrBind             = &Errno{Code: 10002, Message: "Error occurred while binding the request body to the struct."}
-	ErrUserNotFound     = &Errno{Code: 20001, Message: "The user could not be found."}
-)
-
 func (err Errno) Error() string {
 	return err.Message
 }
