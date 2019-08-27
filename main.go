@@ -5,6 +5,7 @@ import (
 	"fruit_shop/config"
 	"fruit_shop/model"
 	"fruit_shop/router"
+	"fruit_shop/router/middleware"
 	"net/http"
 	"time"
 
@@ -42,11 +43,13 @@ func main() {
 
 	g := gin.New() // Create the gin engine
 
-	middlewares := []gin.HandlerFunc{}
+	// middlewares := []gin.HandlerFunc{}
 
 	router.Load(
 		g,
-		middlewares...,
+		middleware.Logging(),
+		middleware.RequestId(),
+		//middlewares...,
 	)
 
 	go func() {
